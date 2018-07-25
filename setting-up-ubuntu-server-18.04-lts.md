@@ -73,9 +73,16 @@ See [this article](https://websiteforstudents.com/configure-static-ip-addresses-
 > ```
 
 ## Install drivers (e.g. Nvidia graphics card)
-
 See [this article](https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-18-04-bionic-beaver-linux).
 
 ```
 sudo ubuntu-drivers autoinstall
+```
+
+## Install CUDA
+See [this article](https://askubuntu.com/questions/1028830/how-do-i-install-cuda-on-ubuntu-18-04).
+
+```
+sudo apt install nvidia-cuda-toolkit gcc-6
+nvcc --version
 ```
