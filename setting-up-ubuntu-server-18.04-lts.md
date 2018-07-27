@@ -73,16 +73,39 @@ See [this article](https://websiteforstudents.com/configure-static-ip-addresses-
 > ```
 
 ## Install drivers (e.g. Nvidia graphics card)
+
 See [this article](https://linuxconfig.org/how-to-install-the-nvidia-drivers-on-ubuntu-18-04-bionic-beaver-linux).
 
 ```
 sudo ubuntu-drivers autoinstall
 ```
 
-## Install CUDA
-See [this article](https://askubuntu.com/questions/1028830/how-do-i-install-cuda-on-ubuntu-18-04).
+## Setting up SSH service
 
 ```
-sudo apt install nvidia-cuda-toolkit gcc-6
-nvcc --version
+sudo apt install OpenSSH
+```
+
+SSH service will be launched by default.
+
+## Shutdown all other ports except 22
+
+According to [this article](https://linuxconfig.org/how-to-deny-all-incoming-ports-except-ssh-port-22-on-ubuntu-18-04-bionic-beaver-linux), Ubuntu provided a functionality called [UFW](https://help.ubuntu.com/community/UFW) (Uncomplicated Firewall). This allow you to forbid all incoming requests from the other ports:
+
+```
+sudo ufw default deny incoming
+sudo ufw allow OpenSSH
+sudo ufw enable
+```
+
+Check status:
+
+```
+sudo ufw status verbose
+```
+
+## Find your public IP
+
+```
+curl ipinfo.io/ip
 ```
