@@ -109,3 +109,11 @@ sudo ufw status verbose
 ```
 curl ipinfo.io/ip
 ```
+
+## Renice SSHD
+
+It would be better to make `sshd` of higher priority to make it responsible even under heavy CPU and/or I/O workload.
+```sh
+ps -eo pid,ppid,ni,comm | grep sshd  # List PID of sshd instances
+sudo renice -n -20 23802 5999 <other-pids-of-sshd>  # Renice SSHD to highest priority.
+```
